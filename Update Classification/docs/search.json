@@ -1,0 +1,21 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n  \r\n    \r\n      \r\n        \r\n        \r\n        \r\n      \r\n      \r\n    \r\n    \r\n      \r\n  Home\r\n\r\n\r\n  LDA Visualization Before Goal\r\n\r\n\r\n  LDA Visualization After Goal\r\n\r\n      \r\n  \r\n\r\n\r\n\r\n\r\n\r\n\r\nAbout this site\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2025-01-28T18:21:35-05:00"
+    },
+    {
+      "path": "index.html",
+      "title": "LDA_Visualizations",
+      "description": "A site for displaying LDA update classification",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n  \r\n    \r\n      \r\n        \r\n        \r\n        \r\n      \r\n      \r\n    \r\n    \r\n      \r\n  Home\r\n\r\n\r\n  LDA Visualization Before Goal\r\n\r\n\r\n  LDA Visualization After Goal\r\n\r\n      \r\n  \r\n\r\n\r\n\r\n\r\n\r\n\r\nLDA_Visualizations\r\n\r\n\r\n\r\n\r\n\r\nProcedure for LDA Update Classification\r\nFor the LDA classification, we used a seven-step process.\r\n\r\nData Sampling\r\nUpdates are not evenly distributed across projects. To make sure that\r\nprojects are not overrepresented in our classification, we sampled at\r\nmost three updates before the project achieves success and three updates\r\nafter the project achieves success.\r\n\r\n\r\nText Processing\r\nOnce sampled, the text was cleaned and tokenized. This process\r\ninvolves removing unnecessary phrases and punctuations. We also\r\nconverted all the text to lowercase and lemmatized the words, a process\r\nwhere the words are converted to their base forms. The text was then\r\ntokenized into sentences.\r\n\r\n\r\nBag of Words\r\nIn order to allow for word pairs that carry meaning in the\r\ncrowdfunding context, like “stretch goal”, we adopted a bigram model.\r\nThis approach allows us to use single words and word pairs to represent\r\ntext. We then decomposed the updates into sentences and treated each\r\nsentence as an individual document. This allows us to interpret the\r\nupdates at the sentence level and enables us to detect more specific\r\ntopics.\r\n\r\n\r\nTF-IDF\r\nTo weigh the importance of words in the document, we apply a Term\r\nFrequency-Inverse Document Frequency (TF-IDF) model, which improves the\r\nvisibility of relevant content. Moreover, it down-weights common words,\r\nwhich helps reduce the impact of noise.\r\nTF-IDF has two components:\r\nTerm Frequency: Measures the frequency of a term in a document,\r\nrepresented by the formula below: \\[\r\n\\text{TF}(t, d) = \\frac{\\text{Number of times term } t \\text{ appears in\r\ndocument } d}{\\text{Total number of terms in document } d}\r\n\\]\r\nInverse Document Frequency (IDF): Measures the importance of a term\r\nin the corpus. It decreases the weight of terms that appear in many\r\ndocuments and increases the weight of those that appear in fewer\r\ndocuments. \\[\r\n\\text{IDF}(t, D) = \\log \\left( \\frac{\\text{Total number of\r\ndocuments}}{\\text{Number of documents containing term } t} \\right)\r\n\\]\r\n\r\nTF-IDF Calculation\r\nTF-IDF is simply the product of TF and IDF.\r\n\\[\r\n\\text{TF-IDF}(t, d, D) = \\text{TF}(t, d) \\times \\text{IDF}(t, D)\r\n\\]\r\n\r\n\r\n\r\nLatent Dirichlet Allocation (LDA)\r\nLDA is a probabilistic model used to discover topics in a collection\r\nof documents. We apply LDA to the TF-IDF weighted corpus. With this\r\nmodel, we classify each document based on five different topics. By\r\napplying LDA to a TF-IDF corpus, we leverage the strengths of both\r\ntechniques, allowing us to capture latent topics from a corpus weighted\r\nby term importance.\r\n\r\n\r\nNavigation to HTML Documents\r\nYou can find the results for the before and after goal update LDA\r\nanalysis on the top right.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2025-01-28T18:22:07-05:00"
+    }
+  ],
+  "collections": []
+}

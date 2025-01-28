@@ -1,0 +1,64 @@
+---
+title: "LDA_Visualizations"
+description: "A site for displaying LDA update classification"
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+# Learn more about publishing to GitHub Pages at:
+# https://rstudio.github.io/distill/publish_website.html#github-pages
+
+```
+
+## Procedure for LDA Update Classification
+
+For the LDA classification, we used a seven-step process.
+
+### Data Sampling
+
+Updates are not evenly distributed across projects. To make sure that projects are not overrepresented in our classification, we sampled at most three updates before the project achieves success and three updates after the project achieves success.
+
+### Text Processing
+
+Once sampled, the text was cleaned and tokenized. This process involves removing unnecessary phrases and punctuations. We also converted all the text to lowercase and lemmatized the words, a process where the words are converted to their base forms. The text was then tokenized into sentences.
+
+### Bag of Words
+
+In order to allow for word pairs that carry meaning in the crowdfunding context, like "stretch goal", we adopted a bigram model. This approach allows us to use single words and word pairs to represent text. We then decomposed the updates into sentences and treated each sentence as an individual document. This allows us to interpret the updates at the sentence level and enables us to detect more specific topics.
+
+### TF-IDF
+
+To weigh the importance of words in the document, we apply a Term Frequency-Inverse Document Frequency (TF-IDF) model, which improves the visibility of relevant content. Moreover, it down-weights common words, which helps reduce the impact of noise.
+
+TF-IDF has two components:
+
+1. Term Frequency: Measures the frequency of a term in a document, represented by the formula below:
+\[
+\text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}
+\]
+2. Inverse Document Frequency (IDF): Measures the importance of a term in the corpus. It decreases the weight of terms that appear in many documents and increases the weight of those that appear in fewer documents.
+\[
+\text{IDF}(t, D) = \log \left( \frac{\text{Total number of documents}}{\text{Number of documents containing term } t} \right)
+\]
+
+#### TF-IDF Calculation
+
+TF-IDF is simply the product of TF and IDF.
+
+\[
+\text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)
+\]
+
+### Latent Dirichlet Allocation (LDA)
+
+LDA is a probabilistic model used to discover topics in a collection of documents. We apply LDA to the TF-IDF weighted corpus. With this model, we classify each document based on five different topics. By applying LDA to a TF-IDF corpus, we leverage the strengths of both techniques, allowing us to capture latent topics from a corpus weighted by term importance.
+
+### Navigation to HTML Documents
+
+You can find the results for the before and after goal update LDA analysis on the top right.
+

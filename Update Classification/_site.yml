@@ -1,0 +1,11 @@
+name: "LDA Update Classification"
+title: "LDA Update Classification"
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "LDA Visualization Before Goal"
+      href: "lda_vis_before_goal.html"
+    - text: "LDA Visualization After Goal"
+      href: "lda_vis_after_goal.html"
