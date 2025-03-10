@@ -9,3 +9,5 @@ navbar:
       href: "lda_vis_before_goal.html"
     - text: "LDA Visualization After Goal"
       href: "lda_vis_after_goal.html"
+    - text: "Effects of Updates Before and After Goal"
+      href: combined_dropdown_3D_plot.html
